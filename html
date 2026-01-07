@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Problem Selection</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.box {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 25px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+th {
+  background: #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<!-- STUDENT SECTION -->
+<div class="box">
+  <h3>Student Selection</h3>
+
+  <input type="text" id="name" placeholder="Student Name">
+  <input type="text" id="roll" placeholder="Roll Number">
+  <input type="text" id="dept" placeholder="Department">
+
+  <!-- Problem ID list -->
+  <select id="problemSelect" size="5"></select>
+
+  <button onclick="submitData()">Submit</button>
+</div>
+
+<!-- TEACHER VIEW -->
+<div class="box">
+  <h3>Teacher View</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Department</th>
+        <th>Problem ID</th>
+      </tr>
+    </thead>
+    <tbody id="result"></tbody>
+  </table>
+</div>
+
+<script>
+let problemIds = [];
+let records = [];
+
+/* Problem ID 1 to 100 */
+for (let i = 1; i <= 100; i++) {
+  problemIds.push(i);
+}
+
+function loadProblems() {
+  const sel = document.getElementById("problemSelect");
+  sel.innerHTML = "";
+
+  problemIds.forEach(id => {
+    sel.innerHTML += `<option value="${id}">Problem ${id}</option>`;
+  });
+}
+loadProblems();
+
+function submitData() {
+  const name = document.getElementById("name").value;
+  const roll = document.getElementById("roll").value;
+  const dept = document.getElementById("dept").value;
+  const problemId = document.getElementById("problemSelect").value;
+
+  if (!name || !roll || !dept || !problemId) {
+    alert("All fields required");
+    return;
+  }
+
+  records.push({
+    name: name,
+    roll: roll,
+    dept: dept,
+    problemId: problemId
+  });
+
+  // remove selected problem id
+  problemIds = problemIds.filter(p => p != problemId);
+
+  updateTable();
+  loadProblems();
+
+  document.getElementById("name").value = "";
+  document.getElementById("roll").value = "";
+  document.getElementById("dept").value = "";
+}
+
+function updateTable() {
+  const table = document.getElementById("result");
+  table.innerHTML = "";
+
+  records.forEach(r => {
+    table.innerHTML += `
+      <tr>
+        <td>${r.name}</td>
+        <td>${r.roll}</td>
+        <td>${r.dept}</td>
+        <td>${r.problemId}</td>
+      </tr>
+    `;
+  });
+}
+</script>
+
+</body>
+</html>
