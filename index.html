@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Problem Selection Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Problem Statement Selection</h2>
+
+<form id="form">
+  <label>Student Roll No:</label><br>
+  <input type="text" id="roll" required><br><br>
+
+  <label>Select ONE Problem Statement:</label><br>
+
+  <div class="options">
+    <!-- 200 options -->
+    <script>
+      for(let i=1;i<=200;i++){
+        document.write(`
+          <label>
+            <input type="radio" name="problem" value="Problem ${i}">
+            Problem ${i}
+          </label><br>
+        `);
+      }
+    </script>
+  </div>
+
+  <br>
+  <button type="submit">Submit</button>
+</form>
+
+<p id="msg"></p>
+
+<script src="script.js"></script>
+</body>
+</html>

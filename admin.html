@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-box">
+
+  <h2>🛡 Admin Login</h2>
+
+  <!-- Admin Login -->
+  <input type="password" id="adminPass" placeholder="Enter Admin Password">
+  <button onclick="login()">Login</button>
+
+  <!-- Admin Data Section -->
+  <div id="dataSection" style="display:none;">
+
+    <h2>📊 Student Selections</h2>
+
+    <table id="table">
+      <tr>
+        <th>Student Roll No</th>
+        <th>Selected Problem</th>
+      </tr>
+    </table>
+
+    <button onclick="clearData()" style="background:#e53935;">
+      🗑 Clear All Data
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+  const ADMIN_PASSWORD = "admin123";
+
+  function login() {
+    const pass = document.getElementById("adminPass").value;
+
+    if (pass === ADMIN_PASSWORD) {
+      document.getElementById("dataSection").style.display = "block";
+      loadData();
+    } else {
+      alert("❌ Wrong Admin Password");
+    }
+  }
+
+  function loadData() {
+    const data = JSON.parse(localStorage.getItem("responses")) || [];
+    const table = document.getElementById("table");
+
+    // Clear old rows
+    table.innerHTML = `
+      <tr>
+        <th>Student Roll No</th>
+        <th>Selected Problem</th>
+      </tr>
+    `;
+
+    data.forEach(item => {
+      const row = table.insertRow();
+      row.insertCell(0).innerText = item.roll;
+      row.insertCell(1).innerText = item.problem;
+    });
+  }
+
+  function clearData() {
+    if (confirm("Are you sure you want to delete all data?")) {
+      localStorage.removeItem("responses");
+      loadData();
+      alert("All data cleared!");
+    }
+  }
+</script>
+
+</body>
+</html>

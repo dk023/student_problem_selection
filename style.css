@@ -1,0 +1,128 @@
+body {
+  font-family: Arial;
+  margin: 40px;
+}
+
+.options {
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+button {
+  padding: 8px 20px;
+  cursor: pointer;
+}
+/* Google-like colorful theme */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form, .admin-box {
+  background: #ffffff;
+  padding: 30px;
+  width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+label {
+  font-weight: 600;
+  color: #444;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+input[type="radio"] {
+  accent-color: #667eea;
+}
+
+.options {
+  margin-top: 10px;
+  height: 250px;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background: #f9f9ff;
+}
+
+.options label {
+  display: block;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.options label:hover {
+  color: #667eea;
+}
+
+button {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
+#msg {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
+
+/* Admin Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background: #667eea;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+  background: #f4f6ff;
+}
+
+tr:nth-child(even) td {
+  background: #eef1ff;
+}
